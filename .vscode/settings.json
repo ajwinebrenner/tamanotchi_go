@@ -1,0 +1,6 @@
+{
+	"go.formatTool": "goimports",
+	"gopls": {
+    	"experimentalWorkspaceModule": true
+ 	},
+}
