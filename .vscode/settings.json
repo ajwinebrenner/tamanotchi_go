@@ -1,6 +1,7 @@
 {
 	"go.formatTool": "goimports",
 	"gopls": {
-    	"experimentalWorkspaceModule": true
+		"formatting.local": "github.com/ajwinebrenner/tmanotchi_go",
+    	"experimentalWorkspaceModule": true,
  	},
 }
