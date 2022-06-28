@@ -3,6 +3,7 @@ package database
 import (
 	"fmt"
 
+	"github.com/ajwinebrenner/tamanotchi_go/api/internal/models"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -15,7 +16,10 @@ func ReadyDB(dbName string) (*gorm.DB, error) {
 
 	m := db.Migrator()
 	models := []interface{}{
-		//models
+		models.Food{},
+		models.Species{},
+		models.House{},
+		models.Pet{},
 	}
 
 	for _, model := range models {
