@@ -31,5 +31,10 @@ func ReadyDB(dbName string) (*gorm.DB, error) {
 		}
 	}
 
+	err = InsertFood(db)
+	if err != nil {
+		return nil, fmt.Errorf("error populating food table: %v", err)
+	}
+
 	return db, nil
 }
