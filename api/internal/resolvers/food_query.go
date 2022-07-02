@@ -16,7 +16,7 @@ type FoodQuery struct {
 }
 
 func (f *FoodQuery) Foods(ctx context.Context) ([]*Food, error) {
-	var foods []*models.Food
+	foods := []*models.Food{}
 	err := f.db.Find(&foods).WithContext(ctx).Error
 	if err != nil {
 		return nil, err
@@ -26,4 +26,17 @@ func (f *FoodQuery) Foods(ctx context.Context) ([]*Food, error) {
 		foodResolvers = append(foodResolvers, &Food{food: food})
 	}
 	return foodResolvers, nil
+}
+
+type foodArgs struct {
+	Name string
+}
+
+func (f *FoodQuery) Food(ctx context.Context, args foodArgs) (*Food, error) {
+	food := &models.Food{}
+	err := f.db.First(food, "name = ?", args.Name).WithContext(ctx).Error
+	if err != nil {
+		return nil, err
+	}
+	return &Food{food: food}, nil
 }

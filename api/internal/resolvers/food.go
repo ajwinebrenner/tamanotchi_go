@@ -33,6 +33,6 @@ func (f *Food) Energy(ctx context.Context) int32 {
 func (f *Food) Happiness(ctx context.Context) int32 {
 	return f.food.Happiness
 }
-func (f *Food) Variety(ctx context.Context) int32 {
-	return int32(f.food.Variety)
+func (f *Food) Variety(ctx context.Context) string {
+	return f.food.Variety.String()
 }

@@ -1,16 +1,46 @@
+type Query {
+	foods: [Food!]!
+	food(name: String!): Food!
+	houses: [House!]!
+	house(name: String!): House!
+	allSpecies: [Species!]!
+	species(name: String!): Species!
+}
+
+type Mutation {
+
+}
+
 type Food {
 	name: String!
 	price: Int!
 	energy: Int!
 	happiness: Int!
-	variety: Int!
+	variety: String!
 }
 
-type Query {
-	foods: [Food!]!
+type House {
+	name: String!
+	price: Int!
+	size: Int!
+	upgrade: House
 }
 
-type Mutation {
-	
+type Species {
+	name: String!
+	stage: Int!
+	maxExp: Int!
+	faveFood: Food
+	evolution: Species
 }
 
+type Pet {
+	id: ID!
+	species: Species!
+	happiness: Int!
+	energy: Int!
+	mood: String!
+	exp: Int!
+	money: Int!
+	house: House!
+}
