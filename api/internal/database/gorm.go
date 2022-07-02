@@ -15,26 +15,34 @@ func ReadyDB(dbName string) (*gorm.DB, error) {
 	}
 
 	m := db.Migrator()
-	models := []interface{}{
+	modelStructs := []interface{}{
 		models.Food{},
 		models.Species{},
 		models.House{},
 		models.Pet{},
 	}
 
-	for _, model := range models {
-		if !m.HasTable(model) {
-			err = m.AutoMigrate(model)
-			if err != nil {
-				return nil, fmt.Errorf("error migrating schema: %v", err)
-			}
+	for _, model := range modelStructs {
+		err = m.AutoMigrate(model)
+		if err != nil {
+			return nil, fmt.Errorf("error migrating schema: %v", err)
 		}
 	}
-
-	err = InsertFood(db)
-	if err != nil {
-		return nil, fmt.Errorf("error populating food table: %v", err)
+	var count int64
+	db.Model(models.Species{}).Count(&count)
+	if count == 0 {
+		err = insertFoods(db)
+		if err != nil {
+			return nil, fmt.Errorf("error populating foods table: %v", err)
+		}
+		err = insertHouses(db)
+		if err != nil {
+			return nil, fmt.Errorf("error populating houses table: %v", err)
+		}
+		err = insertSpecies(db)
+		if err != nil {
+			return nil, fmt.Errorf("error populating species table: %v", err)
+		}
 	}
-
 	return db, nil
 }

@@ -6,7 +6,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func InsertFood(db *gorm.DB) error {
+func insertFoods(db *gorm.DB) error {
 	food := []*models.Food{
 		{Name: "medicine", Price: 8, Energy: 0, Happiness: 0, Variety: variety.HEALING},
 		{Name: "carrot", Price: 3, Energy: 2, Happiness: 0, Variety: variety.HEALTHY},

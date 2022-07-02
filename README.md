@@ -1,5 +1,5 @@
 # TAMANOTCHI GO
-^A revival project for an old app I helped create while learning to code^
+A revival project for an old app I helped create while learning to code
 
 A game made primarily for practice and hopefully some fun
 
