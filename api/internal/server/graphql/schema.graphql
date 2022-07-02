@@ -1,0 +1,16 @@
+type Food {
+	name: String!
+	price: Int!
+	energy: Int!
+	happiness: Int!
+	variety: Int!
+}
+
+type Query {
+	foods: [Food!]!
+}
+
+type Mutation {
+	
+}
+

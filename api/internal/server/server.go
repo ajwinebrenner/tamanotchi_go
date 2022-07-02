@@ -7,7 +7,6 @@ import (
 
 	"github.com/ajwinebrenner/tamanotchi_go/api/internal/config"
 	"github.com/ajwinebrenner/tamanotchi_go/api/internal/database"
-	"github.com/graph-gophers/graphql-go"
 )
 
 func Start(c *config.Config) {
@@ -15,12 +14,13 @@ func Start(c *config.Config) {
 	if err != nil {
 		log.Fatalf("Failed to create database: %v", err)
 	}
-
 	//graphql schema
-
+	schema, err := CreateGraphQLSchema(db)
+	if err != nil {
+		log.Fatalf("Failed to create schema %v", err)
+	}
 	//routes
-	handlers := Routes(db, &graphql.Schema{}, c.CORSorigins, c.CORSmethods)
-
+	handlers := Routes(db, schema, c.CORSorigins, c.CORSmethods)
 	//listen and serve
 	server := &http.Server{
 		Addr:    fmt.Sprintf("%s:%s", c.Host, c.Port),

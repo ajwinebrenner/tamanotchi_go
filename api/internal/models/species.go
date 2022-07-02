@@ -2,8 +2,8 @@ package models
 
 type Species struct {
 	Name          string `gorm:"PrimaryKey"`
-	Stage         int
-	MaxExp        int
+	Stage         int32
+	MaxExp        int32
 	FaveFoodName  string
 	FaveFood      *Food `gorm:"foreignKey:FaveFoodName"`
 	EvolutionName string
