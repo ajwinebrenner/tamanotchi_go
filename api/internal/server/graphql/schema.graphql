@@ -5,6 +5,8 @@ type Query {
 	house(name: String!): House!
 	allSpecies: [Species!]!
 	species(name: String!): Species!
+	pets: [Pet!]!
+	pet(id: Int!): Pet!
 }
 
 type Mutation {
@@ -35,7 +37,7 @@ type Species {
 }
 
 type Pet {
-	id: ID!
+	id: Int!
 	species: Species!
 	happiness: Int!
 	energy: Int!

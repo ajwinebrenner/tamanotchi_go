@@ -7,6 +7,7 @@ func NewRootResolver(db *gorm.DB) *RootResolver {
 		FoodResolver:    NewFoodResolver(db),
 		HouseResolver:   NewHouseResolver(db),
 		SpeciesResolver: NewSpeciesResolver(db),
+		PetResolver:     NewPetResolver(db),
 	}
 }
 
@@ -14,4 +15,5 @@ type RootResolver struct {
 	*FoodResolver
 	*HouseResolver
 	*SpeciesResolver
+	*PetResolver
 }
