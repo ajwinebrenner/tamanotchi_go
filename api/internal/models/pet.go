@@ -4,6 +4,7 @@ import "github.com/ajwinebrenner/tamanotchi_go/api/internal/constants/mood"
 
 type Pet struct {
 	ID          int32 `gorm:"PrimaryKey"`
+	Name        string
 	SpeciesName string
 	Species     *Species `gorm:"foreignKey:SpeciesName"`
 	Happiness   int32

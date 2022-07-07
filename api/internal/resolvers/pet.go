@@ -25,6 +25,10 @@ func (p *Pet) ID(ctx context.Context) int32 {
 	return p.pet.ID
 }
 
+func (p *Pet) Name(ctx context.Context) string {
+	return p.pet.Name
+}
+
 func (p *Pet) Species(ctx context.Context) *Species {
 	return &Species{species: p.pet.Species}
 }
