@@ -5,7 +5,7 @@ import "net/http"
 type Config struct {
 	CORSorigins []string
 	CORSmethods []string
-	DBName      string
+	DBPath      string
 	Host        string
 	Port        string
 }
@@ -20,7 +20,7 @@ func Load() *Config {
 			http.MethodGet,
 			http.MethodPost,
 		},
-		DBName: "tamanotchi.sqlite",
+		DBPath: "internal/database/tamanotchi.sqlite",
 		Host:   "0.0.0.0",
 		Port:   "8080",
 	}

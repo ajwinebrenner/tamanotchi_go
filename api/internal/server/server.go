@@ -10,7 +10,7 @@ import (
 )
 
 func Start(c *config.Config) {
-	db, err := database.ReadyDB(c.DBName)
+	db, err := database.ReadyDB(c.DBPath)
 	if err != nil {
 		log.Fatalf("Failed to create database: %v", err)
 	}
