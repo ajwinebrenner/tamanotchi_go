@@ -10,7 +10,7 @@ type Query {
 }
 
 type Mutation {
-
+	createPet(name: String!, species: String!): Pet!
 }
 
 type Food {

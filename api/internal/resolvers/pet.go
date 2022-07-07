@@ -10,11 +10,13 @@ import (
 func NewPetResolver(db *gorm.DB) *PetResolver {
 	return &PetResolver{
 		NewPetQuery(db),
+		NewPetMutation(db),
 	}
 }
 
 type PetResolver struct {
 	PetQuery
+	PetMutation
 }
 
 type Pet struct {

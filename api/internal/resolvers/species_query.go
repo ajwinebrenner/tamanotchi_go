@@ -42,3 +42,5 @@ func (s *SpeciesQuery) Species(ctx context.Context, args speciesArgs) (*Species,
 	}
 	return &Species{species: species}, nil
 }
+
+// TODO get babies (for hatching new pet)
